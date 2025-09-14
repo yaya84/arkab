@@ -61,4 +61,6 @@ jobs:
           pip install pytest pytest-cov
 
       - name: Run tests with coverage
-        run: PYTHONPATH=. pytest -v --cov=app --cov-report=xml --cov-report=term
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: pytest -v --cov=app --cov-report=xml --cov-report=term
