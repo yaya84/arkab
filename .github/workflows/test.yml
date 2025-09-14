@@ -60,5 +60,14 @@ jobs:
           pip install -r requirements.txt
           pip install pytest pytest-cov
 
+      - name: Debug Python Path
+        run: |
+          echo "PYTHONPATH: $PYTHONPATH"
+          echo "Current directory: $(pwd)"
+          echo "Repository structure:"
+          ls -la
+          echo "App module structure:"
+          find app -type f -name "*.py" | head -10 || echo "No app directory found"
+
       - name: Run tests with coverage
         run: PYTHONPATH=. pytest -v --cov=app --cov-report=xml --cov-report=term
