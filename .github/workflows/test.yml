@@ -36,11 +36,11 @@ jobs:
           --health-retries=5
 
       nats:
-        image: nats:latest
+        image: nats:2.9-alpine
         ports:
           - 4222:4222
         options: >-
-          --health-cmd="nats-server --version"
+          --health-cmd "nats-server --help > /dev/null || exit 1"
           --health-interval=10s
           --health-timeout=5s
           --health-retries=5
